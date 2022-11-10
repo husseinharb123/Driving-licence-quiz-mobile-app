@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H1217" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="QuestionAttempt" representedClassName="QuestionAttempt" syncable="YES" codeGenerationType="class">
+        <attribute name="correctlyAnswered" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="questionImage" optional="YES" attributeType="String"/>
+        <attribute name="secondsTaken" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="attempt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="QuizAttempt" inverseName="questions" inverseEntity="QuizAttempt"/>
+    </entity>
+    <entity name="QuizAttempt" representedClassName="QuizAttempt" syncable="YES" codeGenerationType="class">
+        <attribute name="grade" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" customClassName="[Question]"/>
+        <attribute name="secondsTaken" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="startStamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="pool" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="QuizPool" inverseName="attempts" inverseEntity="QuizPool"/>
+        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="QuestionAttempt" inverseName="attempt" inverseEntity="QuestionAttempt"/>
+    </entity>
+    <entity name="QuizPool" representedClassName="QuizPool" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" customClassName="[QuizAttempt]"/>
+        <relationship name="attempts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="QuizAttempt" inverseName="pool" inverseEntity="QuizAttempt"/>
+    </entity>
+    <elements>
+        <element name="QuestionAttempt" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="QuizAttempt" positionX="-36" positionY="18" width="128" height="133"/>
+        <element name="QuizPool" positionX="-54" positionY="9" width="128" height="73"/>
+    </elements>
+</model>
